@@ -1,4 +1,13 @@
-const Card = ({ name, cuisines, areaName, avgRating, cloudinaryImageId }) => {
+import { Link } from "react-router-dom";
+
+const Card = ({
+  id,
+  name,
+  cuisines,
+  areaName,
+  avgRating,
+  cloudinaryImageId,
+}) => {
   return (
     <div className="card">
       <img
@@ -8,7 +17,7 @@ const Card = ({ name, cuisines, areaName, avgRating, cloudinaryImageId }) => {
         }
         alt="hotel img"
       ></img>
-      <div>{name}</div>
+      <Link to={"restaurant/" + id}>{name}</Link>
       <div>{cuisines[0] + ", " + cuisines[1]}</div>
       <div>{areaName}</div>
       <div>{avgRating} star</div>

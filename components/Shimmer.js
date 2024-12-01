@@ -3,10 +3,11 @@ import Card from "./Card";
 const Shimmer = () => {
   return (
     <div className="restaurant-list">
-      <div className="shimmer-card">Loading</div>
-      <div className="shimmer-card">Loading</div>
-      <div className="shimmer-card">Loading</div>
-      <div className="shimmer-card">Loading</div>
+      {Array(10)
+        .fill("")
+        .map((e, ind) => (
+          <div className="shimmer-card" key={ind}></div>
+        ))}
     </div>
   );
 };
