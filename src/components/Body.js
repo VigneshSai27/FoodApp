@@ -35,10 +35,11 @@ const Body = () => {
     <>
       <input
         type="text"
-        placeholder="search"
+        placeholder="Here you go"
         onChange={(e) => {
           setSearchText(e.target.value);
         }}
+        className="p-1.5 mt-3 ml-96 placeholder-gray-300 outline text-violet-300"
       />
       <button
         onClick={() => {
@@ -46,10 +47,11 @@ const Body = () => {
           console.log(filteredData(searchText, filteredRestaurants));
           setFilteredRestaurants(filteredData(searchText, restaurants));
         }}
+        className="ml-3 bg-pink-200 p-2"
       >
         Search
       </button>
-      <div className="restaurant-list">
+      <div className="flex flex-wrap ">
         {filteredRestaurants?.length === 0 ? (
           <h2>No Restaurant found</h2>
         ) : (

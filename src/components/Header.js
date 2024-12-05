@@ -7,28 +7,37 @@ const Header = () => {
   const [loggedIn, setLoggedIn] = useState(false);
   const isOnline = useOnline();
   return (
-    <div className="header">
+    <div className="flex bg-pink-100">
       <Logo />
-      <div className="nav-items">
-        <ul>
+      <div className="ml-auto">
+        <ul className="flex space-x-20 pt-10">
           <li>
-            <Link to="/">Home</Link>
+            <Link className="text-blue-600" to="/">
+              Home
+            </Link>
           </li>
           <li>
-            <Link to="/about">About</Link>
+            <Link className="text-blue-600" to="/about">
+              About
+            </Link>
           </li>
           <li>
-            <Link to="/contact">Contact</Link>
+            <Link className="text-blue-600" to="/contact">
+              Contact
+            </Link>
           </li>
           <li>Cart</li>
           <li>
-            <Link to="/instamart">Instamart</Link>
+            <Link className="text-blue-600" to="/instamart">
+              Instamart
+            </Link>
           </li>
         </ul>
       </div>
-      {isOnline ? "🟢" : "🔴"}
+      <div className="ml-auto p-10">{isOnline ? "🟢" : "🔴"}</div>
       {loggedIn ? (
         <button
+          className="bg-white ml-auto mr-20 mt-11 mb-10 p-2"
           onClick={() => {
             setLoggedIn(false);
           }}
@@ -37,6 +46,7 @@ const Header = () => {
         </button>
       ) : (
         <button
+          className="bg-white ml-auto mr-20 mt-11 mb-10 p-2"
           onClick={() => {
             setLoggedIn(true);
           }}
