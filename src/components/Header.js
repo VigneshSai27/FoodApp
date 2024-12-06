@@ -6,9 +6,9 @@ import UserContext from "../utils/UserContext";
 
 const Header = () => {
   const { user } = useContext(UserContext);
-
   const [loggedIn, setLoggedIn] = useState(false);
-  const isOnline = useOnline();
+  const { online, setOnlineStatus } = useOnline();
+
   return (
     <div className="flex bg-pink-100">
       <Logo />
@@ -37,7 +37,7 @@ const Header = () => {
           </li>
         </ul>
       </div>
-      <div className="ml-auto mt-10 ">{isOnline ? "🟢" : "🔴"}</div>
+      <div className="ml-auto mt-10 ">{online ? "🟢" : "🔴"}</div>
       <div className="ml-2 mt-10 font-bold">{user.name}</div>
 
       {loggedIn ? (
@@ -45,6 +45,7 @@ const Header = () => {
           className="bg-white ml-auto mr-20 mt-11 mb-10 p-2"
           onClick={() => {
             setLoggedIn(false);
+            setOnlineStatus(false);
           }}
         >
           Logout
@@ -54,6 +55,7 @@ const Header = () => {
           className="bg-white ml-auto mr-20 mt-11 mb-10 p-2"
           onClick={() => {
             setLoggedIn(true);
+            setOnlineStatus(true);
           }}
         >
           Login
