@@ -1,9 +1,12 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import Logo from "./Logo";
 import { Link } from "react-router-dom";
 import useOnline from "../utils/useOnline";
+import UserContext from "../utils/UserContext";
 
 const Header = () => {
+  const { user } = useContext(UserContext);
+
   const [loggedIn, setLoggedIn] = useState(false);
   const isOnline = useOnline();
   return (
@@ -34,7 +37,9 @@ const Header = () => {
           </li>
         </ul>
       </div>
-      <div className="ml-auto p-10">{isOnline ? "🟢" : "🔴"}</div>
+      <div className="ml-auto mt-10 ">{isOnline ? "🟢" : "🔴"}</div>
+      <div className="ml-2 mt-10 font-bold">{user.name}</div>
+
       {loggedIn ? (
         <button
           className="bg-white ml-auto mr-20 mt-11 mb-10 p-2"

@@ -1,13 +1,16 @@
-import { useEffect, useState } from "react";
+import { use, useContext, useEffect, useState } from "react";
 import Card from "./Card";
 import { restaurantList } from "./constants";
 import Shimmer from "./Shimmer";
 import { filteredData } from "../utils/helper";
+import UserContext from "../utils/UserContext";
 
 const Body = () => {
   const [searchText, setSearchText] = useState("");
   const [restaurants, setRestaurants] = useState([]);
   const [filteredRestaurants, setFilteredRestaurants] = useState([]);
+
+  const { user, setUser } = useContext(UserContext); // UserContext.Consumer is used for class components
 
   useEffect(() => {
     restaurantData();
@@ -51,6 +54,16 @@ const Body = () => {
       >
         Search
       </button>
+      <input
+        type="text"
+        className="border border-black ml-4"
+        onChange={(e) => {
+          setUser({
+            ...user,
+            name: e.target.value,
+          });
+        }}
+      />
       <div className="flex flex-wrap ">
         {filteredRestaurants?.length === 0 ? (
           <h2>No Restaurant found</h2>

@@ -1,4 +1,6 @@
 import { Link } from "react-router-dom";
+import UserContext from "../utils/UserContext";
+import { useContext } from "react";
 
 const Card = ({
   id,
@@ -8,6 +10,8 @@ const Card = ({
   avgRating,
   cloudinaryImageId,
 }) => {
+  const { user } = useContext(UserContext);
+
   return (
     <div className="h-96 w-52 ml-14 mt-5 mr-8 mb-16 ">
       <img
@@ -25,6 +29,9 @@ const Card = ({
         <div>{cuisines[0] + ", " + cuisines[1]}</div>
         <div>{areaName}</div>
         <div>{avgRating} star</div>
+        <div>
+          {user.name} - {user.email}
+        </div>
       </div>
     </div>
   );
