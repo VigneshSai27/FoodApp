@@ -13,6 +13,7 @@ import Shimmer from "./components/Shimmer";
 // chunking
 // dynamic importing
 const Instamart = lazy(() => import("./components/Instamart"));
+const Cart = lazy(() => import("./components/Cart"));
 
 const appRouter = createBrowserRouter([
   {
@@ -48,6 +49,14 @@ const appRouter = createBrowserRouter([
           </Suspense>
         ),
         errorElement: <Error />,
+      },
+      {
+        path: "/cart",
+        element: (
+          <Suspense fallback={<Shimmer />}>
+            <Cart />
+          </Suspense>
+        ),
       },
     ],
   },

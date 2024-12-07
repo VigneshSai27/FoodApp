@@ -3,11 +3,14 @@ import Logo from "./Logo";
 import { Link } from "react-router-dom";
 import useOnline from "../utils/useOnline";
 import UserContext from "../utils/UserContext";
+import { useSelector } from "react-redux";
 
 const Header = () => {
   const { user } = useContext(UserContext);
   const [loggedIn, setLoggedIn] = useState(false);
   const { online, setOnlineStatus } = useOnline();
+
+  const cartItems = useSelector((store) => store.cart.items);
 
   return (
     <div className="flex bg-pink-100">
@@ -29,10 +32,14 @@ const Header = () => {
               Contact
             </Link>
           </li>
-          <li>Cart</li>
           <li>
             <Link className="text-blue-600" to="/instamart">
               Instamart
+            </Link>
+          </li>
+          <li>
+            <Link className="text-blue-600" to="/cart">
+              Cart - {cartItems.length}
             </Link>
           </li>
         </ul>

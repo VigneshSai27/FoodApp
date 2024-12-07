@@ -55,6 +55,7 @@ const Body = () => {
         Search
       </button>
       <input
+        hidden
         type="text"
         className="border border-black ml-4"
         onChange={(e) => {
