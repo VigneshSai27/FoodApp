@@ -13,6 +13,7 @@ const RestaurantMenu = () => {
   const dispatch = useDispatch();
 
   const handleAddItems = (item) => {
+    item = { ...item, quantity: 1 };
     dispatch(addItem(item));
   };
 
@@ -34,15 +35,15 @@ const RestaurantMenu = () => {
               >
                 -
               </button>
-              <p className=" bg-violet-200 p-1.5">
+              <p className=" bg-green-200 p-1.5">
                 {
                   cartItems.filter((item) => {
-                    item.id == m.card.info.id;
+                    return item.id == m.card.info.id;
                   }).length
                 }
               </p>
               <button
-                className="border bg-violet-200 p-1.5 hover:bg-red-300"
+                className="border bg-violet-200 p-1.5 hover:bg-green-400"
                 onClick={() => handleAddItems(m.card.info)}
               >
                 +
