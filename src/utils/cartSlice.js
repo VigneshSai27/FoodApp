@@ -17,8 +17,10 @@ const cartSlice = createSlice({
       const existingItem = state.items.find(
         (it) => it.id === action.payload.id
       );
+      console.log(action, state.items.indexOf(existingItem));
       if (existingItem?.quantity > 1) existingItem.quantity -= 1;
-      else state.items.pop(action.payload);
+      else if (existingItem)
+        state.items.splice(state.items.indexOf(existingItem), 1);
     },
     clearCart: (state) => {
       state.items = [];

@@ -36,11 +36,9 @@ const RestaurantMenu = () => {
                 -
               </button>
               <p className=" bg-green-200 p-1.5">
-                {
-                  cartItems.filter((item) => {
-                    return item.id == m.card.info.id;
-                  }).length
-                }
+                {cartItems.find((item) => item.id == m.card.info.id)
+                  ? cartItems.find((item) => item.id == m.card.info.id).quantity
+                  : 0}
               </p>
               <button
                 className="border bg-violet-200 p-1.5 hover:bg-green-400"
